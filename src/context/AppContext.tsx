@@ -33,6 +33,7 @@ interface AppContextType {
   ) => Promise<void>;
   loginUser: (email: string, password: string) => Promise<void>;
   continueAsGuest: () => void;
+  logout: () => void;
   updateMeasurements: (measurements: Partial<BodyMeasurements>) => void;
   posts: ReverseMarketPost[];
   createPost: (
@@ -235,6 +236,13 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     localStorage.setItem(AUTH_SESSION_KEY, 'guest');
     setCurrentUser(guest);
     setAuthSession('guest');
+  };
+
+  const logout = () => {
+    localStorage.removeItem(AUTH_SESSION_KEY);
+    setCurrentUser(createGuestProfile());
+    setAuthSession(null);
+    setIsAuthModalOpen(false);
   };
 
   const updateMeasurements = (measurements: Partial<BodyMeasurements>) => {
@@ -440,6 +448,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         registerUser,
         loginUser,
         continueAsGuest,
+        logout,
         updateMeasurements,
         posts,
         createPost,
