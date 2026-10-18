@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { X, Ruler, MapPin, Phone } from 'lucide-react';
+import { X, Ruler, MapPin, Phone, LogOut } from 'lucide-react';
 
 export const AuthModal: React.FC = () => {
   const {
@@ -9,6 +9,7 @@ export const AuthModal: React.FC = () => {
     currentUser,
     updateMeasurements,
     showNotification,
+    logout,
   } = useApp();
 
   const [formMeasurements, setFormMeasurements] = useState(currentUser.measurements);
@@ -175,6 +176,14 @@ export const AuthModal: React.FC = () => {
               </button>
             </div>
           </form>
+          <button
+            type="button"
+            onClick={logout}
+            className="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-red-300 hover:bg-red-50 hover:text-red-700"
+          >
+            <LogOut className="h-4 w-4" />
+            Keluar / ganti akun
+          </button>
         </div>
       </div>
     </div>
