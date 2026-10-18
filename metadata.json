@@ -1,6 +1,0 @@
-{
-  "name": "TRIFEST - Platform Upcycling Baju Bekas & Reverse Marketplace",
-  "description": "Platform daur ulang pakaian bekas dan reverse marketplace berbasis AI dengan pratinjau 360°, direktori penjahit lokal, dan kurir logistik terintegrasi.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
