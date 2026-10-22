@@ -166,7 +166,18 @@ export const AiStudioView: React.FC = () => {
         }),
       });
 
-      const data = await response.json();
+      const responseText = await response.text();
+      let data: { error?: string; ideas?: unknown[] };
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        throw new Error(
+          response.ok
+            ? 'Server AI mengirim respons yang tidak valid. Silakan coba lagi.'
+            : 'Server AI sedang mengalami gangguan. Silakan coba lagi beberapa saat.'
+        );
+      }
+
       if (!response.ok) {
         throw new Error(data.error || 'Server AI tidak dapat memproses permintaan.');
       }
