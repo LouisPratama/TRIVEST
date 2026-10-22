@@ -11,3 +11,7 @@ export async function POST(request: Request): Promise<Response> {
 
   return Response.json(await generateUpcycleDesign(payload, process.env.GEMINI_API_KEY));
 }
+
+export default async function handler(request: Request): Promise<Response> {
+  return POST(request);
+}
